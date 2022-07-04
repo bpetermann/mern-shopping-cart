@@ -1,5 +1,8 @@
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const User = require('../models/userModel');
 
 exports.registerUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -36,17 +39,13 @@ exports.registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       email: user.email,
-      token: generateToken(user._id),
+      // token: generateToken(user._id),
     });
   } else {
     res.status(400);
     throw new Error('Inavlid user data');
   }
 });
-
-exports.loginUser = (req, res) => {
-  res.send('Login Route');
-};
 
 exports.loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -57,7 +56,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
     res.status(200).json({
       _id: user._id,
       email: user.email,
-      token: generateToken(user._id),
+      // token: generateToken(user._id),
     });
   } else {
     res.status(401);
@@ -65,14 +64,14 @@ exports.loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-const generateToken = (id) => {
-  return jwt.sign(
-    {
-      id,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: '30d',
-    }
-  );
-};
+// const generateToken = (id) => {
+//   return jwt.sign(
+//     {
+//       id,
+//     },
+//     process.env.JWT_SECRET,
+//     {
+//       expiresIn: '30d',
+//     }
+//   );
+// };
