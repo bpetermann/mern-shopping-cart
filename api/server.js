@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/api/shop', require('./routes/shopRoutes'));
+app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
