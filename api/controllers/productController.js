@@ -12,6 +12,15 @@ exports.getProduct = (req, res) => {
 
 exports.createProduct = asyncHandler(async (req, res) => {
   const { name, description, price } = req.body;
+  const user = {
+    id: req.user._id,
+    isAdmin: req.user.isAdmin,
+  };
+
+  if (!user || !user.isAdmin) {
+    res.status(401);
+    throw new Error('Not Authorized');
+  }
 
   const product = await Product.create({
     name,
