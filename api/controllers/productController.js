@@ -21,7 +21,11 @@ exports.createProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     res.status(201).json({
+      _id: product._id,
       name: product.name,
+      description: product.description,
+      price: product.price,
+      amount: product.amount,
     });
   } else {
     res.status(400);
