@@ -39,7 +39,7 @@ exports.registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       email: user.email,
-      // token: generateToken(user._id),
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -56,7 +56,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
     res.status(200).json({
       _id: user._id,
       email: user.email,
-      // token: generateToken(user._id),
+      token: generateToken(user._id),
     });
   } else {
     res.status(401);
@@ -64,14 +64,16 @@ exports.loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// const generateToken = (id) => {
-//   return jwt.sign(
-//     {
-//       id,
-//     },
-//     process.env.JWT_SECRET,
-//     {
-//       expiresIn: '30d',
-//     }
-//   );
-// };
+// Generate token for user
+
+const generateToken = (id) => {
+  return jwt.sign(
+    {
+      id,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: '30d',
+    }
+  );
+};
