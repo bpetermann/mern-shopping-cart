@@ -2,13 +2,16 @@ const asyncHandler = require('express-async-handler');
 
 const Product = require('../models/productModel');
 
-exports.getProducts = (req, res) => {
-  res.send('All Products Route');
-};
+exports.getProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({});
+  res.status(200).json(products);
+});
 
-exports.getProduct = (req, res) => {
-  res.send('Get Product Route');
-};
+exports.getProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.productId);
+
+  res.status(200).json(product);
+});
 
 exports.createProduct = asyncHandler(async (req, res) => {
   const { name, description, price } = req.body;
