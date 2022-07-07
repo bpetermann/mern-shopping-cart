@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.06rem solid #d0d1d3;
+  padding: 0 1rem;
+  background-color: #fff;
+}
+
+.products-NavLink {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.logo-icon {
+  color: #ed6c02;
+  margin-bottom: -0.1rem;
+  margin-right: 0.2rem;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.auth-user-icon {
+  color: #757575;
+  cursor: pointer;
+}
+
+.container h2 {
+  color: #767676;
+  font-weight: 400;
+  margin-right: 0.5rem;
+}
+
+.cartButton {
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+}
+
+.cartImage {
+  margin-top: 0.3rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
+    contrast(86%);
+}
+
+.cartImage:hover {
+  filter: none;
+}
+
+.cartAmountBtn,
+.wishlistAmountBtn {
+  padding: 0 0.4rem;
+  vertical-align: middle;
+  position: relative;
+  top: -1.2rem;
+  left: -0.5rem;
+  border-radius: 50%;
+  background-color: #ff4e00;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.increase {
+  opacity: 0.8;
+}
+
+.wishList {
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+}
+
+.wishList img {
+  margin-top: 0.3rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
+    contrast(86%);
+}
+.wishList img:hover {
+  filter: none;
+}
