@@ -1,0 +1,38 @@
+.form-container {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-border {
+  width: 100%;
+  margin: 1.75rem 0rem;
+  border-bottom: 0.06rem solid #d0d1d3;
+}
+
+.logout-button {
+  width: 90%;
+  max-width: 25rem;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #1a1a1a;
+  border: none;
+  outline: 0.08rem solid #1a1a1a;
+}
+
+.logout-button:hover {
+  background-color: #66676e;
+  color: #fff;
+  outline: none;
+}
+
+@media (min-width: 40rem) {
+  .logout-signup-button {
+    width: 50%;
+  }
+}

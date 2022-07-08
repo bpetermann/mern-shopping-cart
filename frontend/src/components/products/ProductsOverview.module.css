@@ -1,0 +1,56 @@
+.container {
+  display: grid;
+  grid-template-rows: 4rem 20rem minmax(20rem, auto) 4rem;
+  grid-template-areas:
+    '.'
+    'intro'
+    'main'
+    '.';
+  background-color: #ededed;
+}
+
+.intro-container {
+  grid-area: intro;
+  background-color: #f29b04;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 1rem;
+}
+
+.model-image {
+  object-fit: cover;
+  height: 12rem;
+  padding: 1rem;
+}
+
+.advertise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.products-container {
+  grid-area: main;
+  z-index: 50;
+  background-color: #fcc15c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+}
+
+@media (min-width: 40rem) {
+  .model-image {
+    height: 28rem;
+  }
+  .products-container {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

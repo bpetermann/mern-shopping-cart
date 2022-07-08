@@ -1,0 +1,83 @@
+.form {
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 25rem;
+}
+
+.emailInput,
+.passwordInput {
+  box-sizing: border-box;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 2;
+  border: 0.02rem solid #1a1a1a;
+  transition: outline 0.2s ease-in-out;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.form input:hover,
+.form input:focus,
+.form input:active {
+  outline: 0.08rem solid #1a1a1a;
+}
+
+.passwordInputDiv {
+  position: relative;
+}
+
+.showPassword {
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  right: 2.5%;
+  color: #313131;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-button {
+  width: 100%;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+}
+
+.signup-button:hover {
+  background-color: #66676e;
+}
+
+.enable-login-button {
+  width: 90%;
+  max-width: 25rem;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #1a1a1a;
+  border: none;
+  outline: 0.08rem solid #1a1a1a;
+}
+
+.enable-login-button:hover {
+  background-color: #66676e;
+  color: #fff;
+  outline: none;
+}
+
+@media (min-width: 40rem) {
+  .form {
+    width: 50%;
+  }
+  .enable-login-button {
+    width: 50%;
+  }
+}

@@ -1,0 +1,49 @@
+.background {
+  background-color: #1a1a1a;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+}
+
+.accordion-container {
+  font-family: 'Noto Sans, sans-serif';
+  margin-top: 2rem;
+  border-bottom: 0.06rem solid #d0d1d3;
+}
+
+.icon-container {
+  width: 50%;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.navigation-container {
+  margin: 2rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navigation-container a {
+  margin: 1rem 0;
+  text-decoration: none;
+  color: #fcfcfc;
+}
+
+@media (min-width: 60rem) {
+  .container {
+    width: 65%;
+  }
+
+  .navigation-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
