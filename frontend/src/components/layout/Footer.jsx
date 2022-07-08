@@ -1,12 +1,10 @@
 import styles from './Footer.module.css';
 import Accordion from '../ui/Accordion';
 import { SiTwitter, SiSpotify, SiFacebook, SiInstagram } from 'react-icons/si';
-// import Newsletter from './Newsletter';
 
 const Footer = () => {
   return (
     <div className={styles['background']}>
-      {/* <Newsletter /> */}
       <div className={styles['container']}>
         <div className={styles['accordion-container']}>
           <Accordion color={'#fcfcfc'} backgroundColor={'#1a1a1a'} />
