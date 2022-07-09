@@ -1,8 +1,33 @@
+import { useEffect } from 'react';
 import styles from './ProductsOverview.module.css';
 import Footer from '../layout/Footer';
 import ProductsOverviewItem from './ProductsOverviewItem';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProducts, reset } from '../../features/products/productSlice';
+import { toast } from 'react-toastify';
+import Spinner from '../ui/Spinner';
 
-const ProductsOverview = ({ products }) => {
+const ProductsOverview = () => {
+  const { products, isLoading, isError, message } = useSelector(
+    (state) => state.product
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+
+    if (isError) {
+      toast.error(message);
+    }
+
+    dispatch(reset());
+  }, [dispatch, isError, message]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <div className={styles.container}>

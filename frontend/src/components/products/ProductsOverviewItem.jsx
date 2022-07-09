@@ -8,7 +8,7 @@ const ProductsOverviewItem = ({ products }) => {
     <>
       {products.map((item) => {
         return (
-          <div className={styles['product-item-container']} key={item.id}>
+          <div className={styles['product-item-container']} key={item._id}>
             <NavLink to='/'>
               <img
                 src={require('../../images/' + item.name + '.png')}
