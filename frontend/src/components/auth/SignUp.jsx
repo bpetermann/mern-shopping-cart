@@ -29,7 +29,7 @@ const SignUp = ({
   const confirmPasswordIsInvalid =
     !confirmPasswordIsValid && confirmPasswordTouched;
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (!passwordIsValid || !confirmPasswordIsValid) {
       return;
