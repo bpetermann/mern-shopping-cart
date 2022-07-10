@@ -16,7 +16,6 @@ const Newsletter = () => {
   useEffect(() => {
     if (isError) {
       toast.error(message);
-      console.log('hello');
     }
 
     if (isSuccess) {
@@ -34,9 +33,10 @@ const Newsletter = () => {
       email: enteredEmail,
       interests: interestedIn,
     };
-    console.log(subscriptionData);
 
     dispatch(newsletterSubscription(subscriptionData));
+    setEnteredEmail('');
+    setMFashion(false);
   };
 
   return (

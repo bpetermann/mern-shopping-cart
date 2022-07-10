@@ -4,12 +4,12 @@ const newsletterSchema = mongoose.Schema(
   {
     email: {
       type: String,
-      required: [true, 'Please add an email'],
+      required: [true, 'Please add an username'],
       unique: true,
     },
-    interests : {
+    interests: {
       type: Object,
-      required: [true, 'Please add interests'],
+      required: false,
     },
   },
   {
