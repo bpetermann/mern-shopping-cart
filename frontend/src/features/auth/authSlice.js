@@ -44,6 +44,22 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout();
 });
 
+export const newsletterSubscription = createAsyncThunk(
+  'auth/newsletter',
+  async (subscriptionData, thunkAPI) => {
+    try {
+      return await authService.newsletterSubscription(subscriptionData);
+    } catch (err) {
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -87,6 +103,19 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state, action) => {
         state.user = null;
+      })
+      .addCase(newsletterSubscription.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(newsletterSubscription.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+      .addCase(newsletterSubscription.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });

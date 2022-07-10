@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import styles from './ProductsOverview.module.css';
-import Footer from '../layout/Footer';
-import ProductsOverviewItem from './ProductsOverviewItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProducts, reset } from '../../features/products/productSlice';
 import { toast } from 'react-toastify';
+import styles from './ProductsOverview.module.css';
+import ProductsOverviewItem from './ProductsOverviewItem';
+import Newsletter from '../newsletter/Newsletter';
+import Footer from '../layout/Footer';
 import Spinner from '../ui/Spinner';
 
 const ProductsOverview = () => {
@@ -46,6 +47,7 @@ const ProductsOverview = () => {
           {<ProductsOverviewItem products={products} />}
         </div>
       </div>
+      <Newsletter />
       <Footer />
     </>
   );

@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/userModel');
+const Newsletter = require('../models/newsletterModel');
 
 exports.registerUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -61,6 +62,37 @@ exports.loginUser = asyncHandler(async (req, res) => {
   } else {
     res.status(401);
     throw new Error('Invalid credentials');
+  }
+});
+
+exports.newsletterSubscription = asyncHandler(async (req, res) => {
+  const { email, interests } = req.body;
+
+  //Validate email
+  if (!email || !email.includes('@')) {
+    res.status(422);
+    throw new Error('Please enter a valid email');
+  }
+
+  const subscriptionExists = await Newsletter.findOne({ email: email });
+
+  if (subscriptionExists) {
+    res.status(400);
+    throw new Error('Already subscribed to the newsletter');
+  }
+
+  const newsletter = await Newsletter.create({
+    email,
+    interests,
+  });
+
+  if (newsletter) {
+    res.status(201).json({
+      message: 'Subscription successful',
+    });
+  } else {
+    res.status(400);
+    throw new Error("Couldn't subscribe to newsletter");
   }
 });
 
