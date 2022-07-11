@@ -4,20 +4,15 @@ import { getStoredItems } from '../../features/cart/cartSlice';
 import styles from './ProductsOverview.module.css';
 import ProductsOverviewItem from './ProductsOverviewItem';
 import Footer from '../layout/Footer';
-import Spinner from '../ui/Spinner';
 
 const ProductsOverview = () => {
-  const { isLoading, filter, products } = useSelector((state) => state.product);
+  const { filter, products } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getStoredItems(products));
   }, [products, dispatch]);
-
-  if (isLoading || products.length === 0) {
-    return <Spinner />;
-  }
 
   let filteredItems = products.filter((item) => {
     return item.description.toLowerCase().includes(filter.toLowerCase());

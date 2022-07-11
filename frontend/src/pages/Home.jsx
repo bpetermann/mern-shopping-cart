@@ -2,21 +2,27 @@ import { useEffect } from 'react';
 import ProductsOverview from '../components/products/ProductsOverview';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProducts, reset } from '../features/products/productSlice';
-import { toast } from 'react-toastify';
+import Spinner from '../components/ui/Spinner';
 
 const Home = () => {
-  const { isError, message } = useSelector((state) => state.product);
+  const { isSuccess, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    return () => {
+      if (isSuccess) {
+        dispatch(reset());
+      }
+    };
+  }, [dispatch, isSuccess]);
+
+  useEffect(() => {
     dispatch(getProducts());
+  }, [dispatch]);
 
-    if (isError) {
-      toast.error(message);
-    }
-
-    dispatch(reset());
-  }, [dispatch, isError, message]);
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>

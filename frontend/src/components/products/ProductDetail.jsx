@@ -1,38 +1,15 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProduct, reset } from '../../features/products/productSlice';
 import { addItem } from '../../features/cart/cartSlice';
-import { toast } from 'react-toastify';
 import styles from './ProductDetail.module.css';
 import Accordion from '../ui/Accordion';
 import Footer from '../layout/Footer';
 import { RiTruckLine } from 'react-icons/ri';
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { GoPackage } from 'react-icons/go';
-import Spinner from '../ui/Spinner';
 
 const ProductDetail = () => {
-  const { isLoading, product, isError, message } = useSelector(
-    (state) => state.product
-  );
-  const params = useParams();
-
+  const { product } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProduct(params.productId));
-
-    if (isError) {
-      toast.error(message);
-    }
-
-    dispatch(reset());
-  }, [dispatch, isError, message, params.productId]);
-
-  if (isLoading || !product.name) {
-    return <Spinner />;
-  }
 
   return (
     <>

@@ -8,7 +8,13 @@ exports.getProducts = asyncHandler(async (req, res) => {
 });
 
 exports.getProduct = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.productId);
+  productId = req.params.productId;
+  if (!productId.match(/^[0-9a-fA-F]{24}$/)) {
+    res.status(400);
+    throw new Error('No product found');
+  }
+
+  const product = await Product.findById(productId);
 
   if (product) {
     res.status(200).json(product);
