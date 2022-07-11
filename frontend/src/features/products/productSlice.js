@@ -4,6 +4,7 @@ import productService from './productService';
 const initialState = {
   products: [],
   product: {},
+  filter: '',
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -38,6 +39,9 @@ export const productSlice = createSlice({
       state.isLoading = false;
       state.message = '';
     },
+    filter: (state, action) => {
+      state.filter = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -57,5 +61,5 @@ export const productSlice = createSlice({
   },
 });
 
-export const { reset } = productSlice.actions;
+export const { reset, filter } = productSlice.actions;
 export default productSlice.reducer;

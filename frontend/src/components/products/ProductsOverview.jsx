@@ -8,7 +8,7 @@ import Footer from '../layout/Footer';
 import Spinner from '../ui/Spinner';
 
 const ProductsOverview = () => {
-  const { products, isLoading, isError, message } = useSelector(
+  const { products, isLoading, isError, message, filter } = useSelector(
     (state) => state.product
   );
 
@@ -28,6 +28,10 @@ const ProductsOverview = () => {
     return <Spinner />;
   }
 
+  let filteredItems = products.filter((item) => {
+    return item.description.toLowerCase().includes(filter.toLowerCase());
+  });
+
   return (
     <>
       <div className={styles.container}>
@@ -43,7 +47,7 @@ const ProductsOverview = () => {
           />
         </div>
         <div className={styles['products-container']}>
-          {<ProductsOverviewItem products={products} />}
+          {<ProductsOverviewItem products={filteredItems} />}
         </div>
       </div>
       <Footer />
