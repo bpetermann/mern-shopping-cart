@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProduct, reset } from '../../features/products/productSlice';
+import { addItem } from '../../features/cart/cartSlice';
 import { toast } from 'react-toastify';
 import styles from './ProductDetail.module.css';
 import Accordion from '../ui/Accordion';
@@ -52,7 +53,14 @@ const ProductDetail = () => {
             <select>
               <option value='one'>One Size</option>
             </select>
-            <button>Add to Cart</button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(addItem(product));
+              }}
+            >
+              Add to Cart
+            </button>
           </form>
           <table className={styles['product-table']}>
             <tbody>
