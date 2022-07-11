@@ -1,0 +1,50 @@
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 5%;
+  top: 25%;
+  width: 90%;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 40rem) {
+  .container {
+    left: 20%;
+    width: 60%;
+  }
+}
+
+@media (min-width: 60rem) {
+  .container {
+    left: 30%;
+    width: 40%;
+  }
+}
+
+.orderButton {
+  margin: 1rem;
+  width: 20rem;
+  background-color: #ff4e00;
+  color: #fff;
+  font-size: 1rem;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+}
+
+.orderButton:hover {
+  opacity: 0.8;
+}
+
+.total {
+  width: 75%;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

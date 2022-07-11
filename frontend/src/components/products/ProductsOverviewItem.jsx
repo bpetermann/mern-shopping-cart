@@ -2,8 +2,12 @@ import styles from './ProductsOverviewItem.module.css';
 import { NavLink } from 'react-router-dom';
 import StyledIcon from '../ui/StyledIcon';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../features/cart/cartSlice';
 
 const ProductsOverviewItem = ({ products }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
       {products.map((item) => {
@@ -21,7 +25,14 @@ const ProductsOverviewItem = ({ products }) => {
             </StyledIcon>
             <div>{item.description}</div>
             <div className={styles['item-price']}>{item.price} $</div>
-            <button className={styles['button']}>Add to Cart</button>
+            <button
+              className={styles['button']}
+              onClick={() => {
+                dispatch(addItem(item));
+              }}
+            >
+              Add to Cart
+            </button>
           </div>
         );
       })}

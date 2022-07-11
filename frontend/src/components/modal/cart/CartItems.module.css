@@ -1,0 +1,35 @@
+.container {
+  width: 75%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #d0d1d3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product {
+  display: flex;
+  width: 8rem;
+  justify-content: space-between;
+}
+
+.quantityControl {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.button {
+  width: 2rem;
+  height: 2rem;
+  background-color: #fff;
+  outline: none;
+  border: 1px solid #000;
+  font-size: 1rem;
+}
+
+.button:hover {
+  border: 2px solid #000;
+  opacity: 0.8;
+}
