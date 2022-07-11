@@ -38,7 +38,10 @@ const WishlistItems = () => {
             <div className={styles.price}>{item.price} $</div>
             <button
               className={styles.button}
-              onClick={() => dispatch(addItem(item))}
+              onClick={() => {
+                dispatch(removeFromWishlist(item));
+                dispatch(addItem(item));
+              }}
             >
               Add to Cart
             </button>

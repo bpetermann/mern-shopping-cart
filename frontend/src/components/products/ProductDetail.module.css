@@ -7,12 +7,19 @@
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
 
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+}
+
 .image-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-height: 500px;
-  max-width:  500px;
+  max-width: 500px;
 }
 
 .product-image {

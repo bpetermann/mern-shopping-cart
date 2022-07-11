@@ -1,0 +1,28 @@
+.container {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.not-found-text {
+  margin: 1.75rem 0;
+}
+
+.homepage-link {
+  color: #1a1a1a;
+  text-decoration: none;
+  border: 0.12rem solid #1a1a1a;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+}
+
+.homepage-link:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+}

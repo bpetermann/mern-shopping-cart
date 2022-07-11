@@ -1,13 +1,13 @@
 import styles from './ProductsOverviewItem.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import StyledIcon from '../ui/StyledIcon';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { addItem } from '../../features/cart/cartSlice';
 import {
   removeFromWishlist,
   addToWishlist,
 } from '../../features/wishlist/wishlistSlice';
+import StyledIcon from '../ui/StyledIcon';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const ProductsOverviewItem = ({ products }) => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const ProductsOverviewItem = ({ products }) => {
       {products.map((item) => {
         return (
           <div className={styles['product-item-container']} key={item._id}>
-            <NavLink to={`/product/${item._id}`}>
+            <NavLink to={`/products/${item._id}`}>
               <img
                 src={require('../../images/' + item.name + '.png')}
                 alt={item.name}

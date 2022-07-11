@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addItem } from '../../features/cart/cartSlice';
+import { reset } from '../../features/products/productSlice';
 import styles from './ProductDetail.module.css';
+import Spinner from '../../components/ui/Spinner';
 import Accordion from '../ui/Accordion';
 import Footer from '../layout/Footer';
 import { RiTruckLine } from 'react-icons/ri';
@@ -8,8 +12,24 @@ import { BsArrowReturnLeft } from 'react-icons/bs';
 import { GoPackage } from 'react-icons/go';
 
 const ProductDetail = () => {
-  const { product } = useSelector((state) => state.product);
+  const { product, isLoading, isError } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isError) {
+      navigate('/not-found');
+      dispatch(reset());
+    }
+  }, [isError, navigate, dispatch]);
+
+  if (isLoading || !product.name) {
+    return (
+      <div className={styles['spinner-container']}>
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <>

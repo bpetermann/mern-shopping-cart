@@ -1,14 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Cart from './components/modal/cart/Cart';
+import Wishlist from './components/modal/wishlist/Wishlist';
 import Navbar from './components/layout/Navbar';
 import Searchbar from './components/layout/Searchbar';
-import { useSelector } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
 import Product from './pages/Product';
-import Cart from './components/modal/cart/Cart';
-import Wishlist from './components/modal/wishlist/Wishlist';
+import NotFoundPage from './pages/404';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const { showShoppingCart } = useSelector((state) => state.cart);
@@ -25,7 +26,8 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/auth' element={<Auth />} />
-          <Route path='/product/:productId' element={<Product />} />
+          <Route path='/products/:productId' element={<Product />} />
+          <Route path='/not-found' element={<NotFoundPage />} />
         </Routes>
       </Router>
       <ToastContainer />

@@ -5,10 +5,10 @@ import { getWishlistItems } from '../../features/wishlist/wishlistSlice';
 import styles from './ProductsOverview.module.css';
 import ProductsOverviewItem from './ProductsOverviewItem';
 import Footer from '../layout/Footer';
+import Spinner from '../../components/ui/Spinner';
 
 const ProductsOverview = () => {
-  const { filter, products } = useSelector((state) => state.product);
-
+  const { filter, products, isLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,6 +19,12 @@ const ProductsOverview = () => {
   let filteredItems = products.filter((item) => {
     return item.description.toLowerCase().includes(filter.toLowerCase());
   });
+
+  let content = isLoading ? (
+    <Spinner />
+  ) : (
+    <ProductsOverviewItem products={filteredItems} />
+  );
 
   return (
     <>
@@ -34,9 +40,7 @@ const ProductsOverview = () => {
             className={styles['model-image']}
           />
         </div>
-        <div className={styles['products-container']}>
-          {<ProductsOverviewItem products={filteredItems} />}
-        </div>
+        <div className={styles['products-container']}>{content}</div>
       </div>
       <Footer />
     </>
