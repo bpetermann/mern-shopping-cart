@@ -13,6 +13,25 @@ export const cartSlice = createSlice({
       state.cartItems = [];
       state.showShoppingCart = false;
     },
+    getStoredItems: (state, action) => {
+      const items = action.payload;
+      if (localStorage.length !== 0) {
+        const initialCartItems = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          const value = parseInt(localStorage.getItem(key));
+          const index = items.findIndex((item) => item._id === key);
+          if (index !== -1) {
+            const storedItem = {
+              ...items[index],
+              amount: value,
+            };
+            initialCartItems.push(storedItem);
+          }
+        }
+        state.cartItems = [...initialCartItems];
+      }
+    },
     cartToggle: (state) => {
       state.showShoppingCart = !state.showShoppingCart;
     },
@@ -63,5 +82,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { cartToggle, addItem, removeItem } = cartSlice.actions;
+export const { cartToggle, getStoredItems, addItem, removeItem } =
+  cartSlice.actions;
 export default cartSlice.reducer;
