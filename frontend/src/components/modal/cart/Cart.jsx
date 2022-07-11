@@ -15,7 +15,7 @@ const Cart = () => {
 
   return (
     <>
-      <Backdrop />
+      <Backdrop toggle={'cart'} />
       <div className={classes.container}>
         <CartItems />
         {totalPrice > 0 && (

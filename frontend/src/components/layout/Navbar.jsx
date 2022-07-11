@@ -2,7 +2,7 @@ import styles from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 import { BsFillTriangleFill, BsFillPersonFill } from 'react-icons/bs';
 import IconButton from '@mui/material/IconButton';
-import { CartBadge } from '../ui/Badge';
+import { CartBadge, WishlistBadge } from '../ui/Badge';
 
 const Navbar = () => {
   return (
@@ -17,6 +17,7 @@ const Navbar = () => {
             <BsFillPersonFill size={24} className={styles['auth-user-icon']} />
           </IconButton>
         </NavLink>
+        <WishlistBadge />
         <CartBadge />
       </div>
     </header>

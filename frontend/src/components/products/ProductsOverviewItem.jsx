@@ -1,12 +1,18 @@
 import styles from './ProductsOverviewItem.module.css';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import StyledIcon from '../ui/StyledIcon';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useDispatch } from 'react-redux';
 import { addItem } from '../../features/cart/cartSlice';
+import {
+  removeFromWishlist,
+  addToWishlist,
+} from '../../features/wishlist/wishlistSlice';
 
 const ProductsOverviewItem = ({ products }) => {
   const dispatch = useDispatch();
+
+  const { wishlistItems } = useSelector((state) => state.wishlist);
 
   return (
     <>
@@ -20,9 +26,15 @@ const ProductsOverviewItem = ({ products }) => {
                 className={styles['product-image']}
               />
             </NavLink>
-            <StyledIcon>
-              <FavoriteIcon />
-            </StyledIcon>
+            {wishlistItems.includes(item) ? (
+              <StyledIcon onClick={() => dispatch(removeFromWishlist(item))}>
+                <FavoriteIcon className={styles['wishlist-heart-button']} />
+              </StyledIcon>
+            ) : (
+              <StyledIcon onClick={() => dispatch(addToWishlist(item))}>
+                <FavoriteIcon />
+              </StyledIcon>
+            )}
             <div>{item.description}</div>
             <div className={styles['item-price']}>{item.price} $</div>
             <button

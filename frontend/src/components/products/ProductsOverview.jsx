@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStoredItems } from '../../features/cart/cartSlice';
+import { getWishlistItems } from '../../features/wishlist/wishlistSlice';
 import styles from './ProductsOverview.module.css';
 import ProductsOverviewItem from './ProductsOverviewItem';
 import Footer from '../layout/Footer';
@@ -12,6 +13,7 @@ const ProductsOverview = () => {
 
   useEffect(() => {
     dispatch(getStoredItems(products));
+    dispatch(getWishlistItems(products));
   }, [products, dispatch]);
 
   let filteredItems = products.filter((item) => {

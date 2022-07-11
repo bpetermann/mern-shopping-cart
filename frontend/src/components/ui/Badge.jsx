@@ -2,8 +2,10 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartToggle } from '../../features/cart/cartSlice';
+import { wishlistToggle } from '../../features/wishlist/wishlistSlice';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -31,4 +33,19 @@ function CartBadge() {
   );
 }
 
-export { CartBadge };
+function WishlistBadge() {
+  const dispatch = useDispatch();
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+
+  const totalWishlistItems = wishlistItems.length;
+
+  return (
+    <IconButton aria-label='cart' onClick={() => dispatch(wishlistToggle())}>
+      <StyledBadge badgeContent={totalWishlistItems} color='warning'>
+        <FavoriteIcon />
+      </StyledBadge>
+    </IconButton>
+  );
+}
+
+export { CartBadge, WishlistBadge };
