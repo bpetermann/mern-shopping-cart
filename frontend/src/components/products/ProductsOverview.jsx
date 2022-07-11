@@ -15,7 +15,7 @@ const ProductsOverview = () => {
     dispatch(getStoredItems(products));
   }, [products, dispatch]);
 
-  if (isLoading) {
+  if (isLoading || products.length === 0) {
     return <Spinner />;
   }
 

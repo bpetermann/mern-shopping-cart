@@ -21,7 +21,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/auth' element={<Auth />} />
-          <Route path='/products/:productId' element={<Product />} />
+          <Route path='/product/:productId' element={<Product />} />
         </Routes>
       </Router>
       <ToastContainer />

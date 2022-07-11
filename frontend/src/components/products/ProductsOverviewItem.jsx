@@ -13,7 +13,7 @@ const ProductsOverviewItem = ({ products }) => {
       {products.map((item) => {
         return (
           <div className={styles['product-item-container']} key={item._id}>
-            <NavLink to='/'>
+            <NavLink to={`/product/${item._id}`}>
               <img
                 src={require('../../images/' + item.name + '.png')}
                 alt={item.name}

@@ -10,7 +10,12 @@ exports.getProducts = asyncHandler(async (req, res) => {
 exports.getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.productId);
 
-  res.status(200).json(product);
+  if (product) {
+    res.status(200).json(product);
+  } else {
+    res.status(400);
+    throw new Error('No product found');
+  }
 });
 
 exports.createProduct = asyncHandler(async (req, res) => {

@@ -2,15 +2,26 @@ import spinner from '../../images/spinner.gif';
 
 const Spinner = () => {
   return (
-    <img
-      src={spinner}
-      alt='Loading...'
+    <div
       style={{
-        width: '50px',
+        height: '60vh',
+        width: '20rem',
         margin: 'auto',
-        display: 'block',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
       }}
-    />
+    >
+      <img
+        src={spinner}
+        alt='Loading...'
+        style={{
+          width: '50px',
+          margin: 'auto',
+        }}
+      />
+    </div>
   );
 };
 
