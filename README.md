@@ -1,7 +1,7 @@
 # Mern Shopping Cart
 
-- WORK IN PROGRESS
 - Rebuilding my [shopping-cart](https://github.com/bpetermann/shopping-cart) project with node and express
+- Managing state with redux
 
 ### Thanks
 
