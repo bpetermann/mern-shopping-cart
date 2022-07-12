@@ -1,12 +1,25 @@
 # Mern Shopping Cart
 
 - Rebuilding my [shopping-cart](https://github.com/bpetermann/shopping-cart) project with node and express
-- Managing state with redux
+- State is managed via redux
+- You can subsrcibe to a newsletter, put products to the cart / wihslist, view a single product
+- [View Live on Heroku](https://bensmernshoppingcart.herokuapp.com/)
 
 ### Thanks
 
 - Model photo by <a href="https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ian dooley</a> on <a href="https://unsplash.com/s/photos/model?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a><br>
 - Product photos by <a href="https://unsplash.com/@ikredenets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Irene Kredenets</a> on <a href="https://unsplash.com/s/photos/shoes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+### Tools
+
+- [redux](https://react-redux.js.org/)
+- [nodejs](https://nodejs.org/en/)
+- [mongodb](https://www.mongodb.com/)
+- [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+- [expressjs](https://expressjs.com/de/)
+- [material-ui](https://mui.com/material-ui/material-icons/)
+- [react-icons](https://react-icons.github.io/react-icons/)
+- [react-toastify](https://www.npmjs.com/package/react-toastify)
 
 ### Set Environment Variables
 
