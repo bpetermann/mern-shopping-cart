@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const Product = require('../models/productModel');
+const Rating = require('../models/ratingModel');
 
 exports.getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({});
@@ -53,5 +54,46 @@ exports.createProduct = asyncHandler(async (req, res) => {
   } else {
     res.status(400);
     throw new Error('Inavlid user data');
+  }
+});
+
+exports.rateProduct = asyncHandler(async (req, res) => {
+  id = req.params.productId;
+  const { rating } = req.body;
+  const user = {
+    email: req.user.email,
+  };
+
+  if (!user) {
+    res.status(401);
+    throw new Error('Not Authorized');
+  }
+
+  const userRatingExists = await Rating.findOne({
+    email: user.email,
+    id: id,
+  });
+
+  if (userRatingExists) {
+    res.status(400);
+    throw new Error('Product was already rated!');
+  }
+
+  const newRating = await Rating.create({
+    email: user.email,
+    id,
+    rating,
+  });
+
+  if (newRating) {
+    res.status(201).json({
+      _id: newRating._id,
+      email: newRating.email,
+      id: newRating.id,
+      rating: newRating.rating,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Could'nt rate product");
   }
 });

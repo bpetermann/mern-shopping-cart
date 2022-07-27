@@ -10,4 +10,6 @@ router
 
 router.route('/:productId').get(productController.getProduct);
 
+router.route('/rate/:productId').post(protect,productController.rateProduct);
+
 module.exports = router;
