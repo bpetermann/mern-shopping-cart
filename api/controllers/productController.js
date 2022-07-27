@@ -80,7 +80,7 @@ exports.rateProduct = asyncHandler(async (req, res) => {
   }
 
   const newRating = await Rating.create({
-    email: user.email,
+    user: user.email,
     id,
     rating,
   });
@@ -96,4 +96,13 @@ exports.rateProduct = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Could'nt rate product");
   }
+});
+
+exports.getRatings = asyncHandler(async (req, res) => {
+  const productId = req.params.productId;
+  const ratings = await Rating.find({});
+
+  const selectedRatings = ratings.filter((rating) => rating.id === productId);
+
+  res.status(200).json(selectedRatings);
 });

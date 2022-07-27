@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { AverageRating, YourRating } from '../ui/Rating';
 import { addItem } from '../../features/cart/cartSlice';
 import { reset } from '../../features/products/productSlice';
 import styles from './ProductDetail.module.css';
@@ -9,7 +10,6 @@ import Accordion from '../ui/Accordion';
 import Footer from '../layout/Footer';
 import { RiTruckLine } from 'react-icons/ri';
 import { BsArrowReturnLeft } from 'react-icons/bs';
-import { AverageRating, YourRating } from '../ui/Rating';
 import { GoPackage } from 'react-icons/go';
 
 const ProductDetail = () => {
