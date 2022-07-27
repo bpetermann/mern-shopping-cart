@@ -59,18 +59,10 @@ exports.createProduct = asyncHandler(async (req, res) => {
 
 exports.rateProduct = asyncHandler(async (req, res) => {
   id = req.params.productId;
-  const { rating } = req.body;
-  const user = {
-    email: req.user.email,
-  };
-
-  if (!user) {
-    res.status(401);
-    throw new Error('Not Authorized');
-  }
+  const { email, rating } = req.body;
 
   const userRatingExists = await Rating.findOne({
-    email: user.email,
+    email,
     id: id,
   });
 
@@ -80,7 +72,7 @@ exports.rateProduct = asyncHandler(async (req, res) => {
   }
 
   const newRating = await Rating.create({
-    user: user.email,
+    email,
     id,
     rating,
   });
@@ -108,11 +100,6 @@ exports.getRatings = asyncHandler(async (req, res) => {
 
   const averageRating =
     selectedRatings.reduce((sum, { rating }) => sum + rating, 0) / userRatings;
-
-  // const userRating = {
-  //   average: Math.ceil(averageRating),
-  //   userRatings: userRatings,
-  // };
 
   res.status(200).json({
     average: Math.ceil(averageRating),

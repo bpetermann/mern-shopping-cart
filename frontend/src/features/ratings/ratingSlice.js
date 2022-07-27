@@ -25,11 +25,27 @@ export const getRatings = createAsyncThunk(
   }
 );
 
+export const rateProduct = createAsyncThunk(
+  'ratings/rateProduct',
+  async (ratingData, thunkAPI) => {
+    try {
+      return await ratingService.rateProduct(ratingData);
+    } catch (err) {
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const ratingSlice = createSlice({
   name: 'ratings',
   initialState,
   reducers: {
-    reset: (state) => {
+    resetRating: (state) => {
       state.ratings = {};
       state.isError = false;
       state.isSuccess = false;
@@ -51,9 +67,22 @@ export const ratingSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(rateProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(rateProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload;
+      })
+      .addCase(rateProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
 
-export const { reset } = ratingSlice.actions;
+export const { resetRating } = ratingSlice.actions;
 export default ratingSlice.reducer;

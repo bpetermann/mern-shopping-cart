@@ -5,7 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { AverageRating, YourRating } from '../ui/Rating';
 import { addItem } from '../../features/cart/cartSlice';
 import { reset } from '../../features/products/productSlice';
-import { getRatings } from '../../features/ratings/ratingSlice';
+import {
+  getRatings,
+  rateProduct,
+  resetRating,
+} from '../../features/ratings/ratingSlice';
 import styles from './ProductDetail.module.css';
 import Spinner from '../../components/ui/Spinner';
 import Accordion from '../ui/Accordion';
@@ -23,12 +27,22 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const productRatingHandler = (rating) => {
-    console.log(rating);
+  const productRatingHandler = async (rating) => {
+    const ratingData = {
+      email: user.email,
+      productId: params.productId,
+      rating,
+    };
+    dispatch(rateProduct(ratingData));
   };
 
   useEffect(() => {
     dispatch(getRatings(params.productId));
+
+    return () => {
+      dispatch(resetRating());
+    };
+
     //eslint-disable-next-line
   }, []);
 
