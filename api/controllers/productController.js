@@ -104,5 +104,18 @@ exports.getRatings = asyncHandler(async (req, res) => {
 
   const selectedRatings = ratings.filter((rating) => rating.id === productId);
 
-  res.status(200).json(selectedRatings);
+  const userRatings = selectedRatings.length;
+
+  const averageRating =
+    selectedRatings.reduce((sum, { rating }) => sum + rating, 0) / userRatings;
+
+  // const userRating = {
+  //   average: Math.ceil(averageRating),
+  //   userRatings: userRatings,
+  // };
+
+  res.status(200).json({
+    average: Math.ceil(averageRating),
+    userRatings: userRatings,
+  });
 });

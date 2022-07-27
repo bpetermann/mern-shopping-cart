@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AverageRating, YourRating } from '../ui/Rating';
 import { addItem } from '../../features/cart/cartSlice';
 import { reset } from '../../features/products/productSlice';
+import { getRatings } from '../../features/ratings/ratingSlice';
 import styles from './ProductDetail.module.css';
 import Spinner from '../../components/ui/Spinner';
 import Accordion from '../ui/Accordion';
@@ -15,13 +17,20 @@ import { GoPackage } from 'react-icons/go';
 const ProductDetail = () => {
   const { product, isLoading, isError } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.auth);
+  const { ratings } = useSelector((state) => state.ratings);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
 
   const productRatingHandler = (rating) => {
     console.log(rating);
   };
+
+  useEffect(() => {
+    dispatch(getRatings(params.productId));
+    //eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (isError) {
@@ -53,7 +62,10 @@ const ProductDetail = () => {
           <p className={styles['product-description']}>{product.description}</p>
           <p>€{product.price}</p>
           <div className={styles['product-rating']}>
-            <AverageRating average={1} ratings={1} />
+            <AverageRating
+              average={ratings.average}
+              ratings={ratings.userRatings}
+            />
             {user && <YourRating productRating={productRatingHandler} />}
           </div>
           <form className={styles['product-order-form']}>
