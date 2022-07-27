@@ -9,12 +9,19 @@ import Accordion from '../ui/Accordion';
 import Footer from '../layout/Footer';
 import { RiTruckLine } from 'react-icons/ri';
 import { BsArrowReturnLeft } from 'react-icons/bs';
+import { AverageRating, YourRating } from '../ui/Rating';
 import { GoPackage } from 'react-icons/go';
 
 const ProductDetail = () => {
   const { product, isLoading, isError } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const productRatingHandler = (rating) => {
+    console.log(rating);
+  };
 
   useEffect(() => {
     if (isError) {
@@ -45,7 +52,10 @@ const ProductDetail = () => {
           <h2 className={styles['product-name']}>{product.name}</h2>
           <p className={styles['product-description']}>{product.description}</p>
           <p>€{product.price}</p>
-          <div className={styles['product-rating']}></div>
+          <div className={styles['product-rating']}>
+            <AverageRating average={1} ratings={1} />
+            {user && <YourRating productRating={productRatingHandler} />}
+          </div>
           <form className={styles['product-order-form']}>
             <select>
               <option value='one'>One Size</option>
