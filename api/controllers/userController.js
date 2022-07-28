@@ -78,7 +78,7 @@ exports.newsletterSubscription = asyncHandler(async (req, res) => {
 
   if (subscriptionExists) {
     res.status(400);
-    throw new Error('Already subscribed to the newsletter');
+    throw new Error("You're already subscribed!");
   }
 
   const newsletter = await Newsletter.create({

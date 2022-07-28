@@ -1,42 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Newsletter.module.css';
 import { AiOutlineMail } from 'react-icons/ai';
 import { toast } from 'react-toastify';
-import { useSelector, useDispatch } from 'react-redux';
-import { newsletterSubscription, reset } from '../../features/auth/authSlice';
+
+async function addNewsletterSubscription(enteredEmail, interests) {
+  const response = await fetch('/api/users/newsletter', {
+    method: 'POST',
+    body: JSON.stringify({ email: enteredEmail, interests }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Something went wrong!');
+  }
+
+  return data;
+}
 
 const Newsletter = () => {
   const [enteredEmail, setEnteredEmail] = useState('');
   const [mfashion, setMFashion] = useState(false);
   const [wfashion, setWFashion] = useState(true);
-  const dispatch = useDispatch();
 
-  const { isError, isSuccess, message } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-
-    if (isSuccess) {
-      toast.success(message);
-    }
-
-    dispatch(reset());
-  }, [isError, isSuccess, message, dispatch]);
-
-  const registrationHandler = (e) => {
+  const registrationHandler = async (e) => {
     e.preventDefault();
-    const interestedIn = { mfashion: mfashion, wfashion: wfashion };
+    const interests = { mfashion: mfashion, wfashion: wfashion };
 
-    const subscriptionData = {
-      email: enteredEmail,
-      interests: interestedIn,
-    };
-
-    dispatch(newsletterSubscription(subscriptionData));
-    setEnteredEmail('');
-    setMFashion(false);
+    try {
+      const result = await addNewsletterSubscription(enteredEmail, interests);
+      toast.success(result.message);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (

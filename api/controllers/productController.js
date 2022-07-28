@@ -79,10 +79,7 @@ exports.rateProduct = asyncHandler(async (req, res) => {
 
   if (newRating) {
     res.status(201).json({
-      _id: newRating._id,
-      email: newRating.email,
-      id: newRating.id,
-      rating: newRating.rating,
+      message: 'Your rating was stored',
     });
   } else {
     res.status(400);
