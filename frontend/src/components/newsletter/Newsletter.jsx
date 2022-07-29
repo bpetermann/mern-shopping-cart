@@ -2,24 +2,7 @@ import React, { useState } from 'react';
 import styles from './Newsletter.module.css';
 import { AiOutlineMail } from 'react-icons/ai';
 import { toast } from 'react-toastify';
-
-async function addNewsletterSubscription(enteredEmail, interests) {
-  const response = await fetch('/api/users/newsletter', {
-    method: 'POST',
-    body: JSON.stringify({ email: enteredEmail, interests }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || 'Something went wrong!');
-  }
-
-  return data;
-}
+import { addNewsletterSubscription } from '../../lib/db-util';
 
 const Newsletter = () => {
   const [enteredEmail, setEnteredEmail] = useState('');

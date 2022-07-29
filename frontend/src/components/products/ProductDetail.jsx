@@ -13,24 +13,7 @@ import Footer from '../layout/Footer';
 import { RiTruckLine } from 'react-icons/ri';
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { GoPackage } from 'react-icons/go';
-
-async function addProductRating(value, id, email) {
-  const response = await fetch(`/api/products/rate/${id}`, {
-    method: 'POST',
-    body: JSON.stringify({ rating: value, email: email }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || 'Something went wrong!');
-  }
-
-  return data;
-}
+import { addProductRating } from '../../lib/db-util';
 
 const ProductDetail = () => {
   const [rating, setRating] = useState(null);
