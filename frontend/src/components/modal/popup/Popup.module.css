@@ -1,0 +1,90 @@
+.container {
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  top: 10%;
+  bottom: 50%;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  outline: 1rem solid #fff;
+  border: 0.06rem solid #d0d1d3;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    left: 25%;
+    width: 50%;
+  }
+}
+
+.content {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 25rem;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.headline {
+  margin-top: -1rem;
+}
+
+.info {
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.emailadress {
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1rem;
+  text-align: center;
+  border: 0.02rem solid #d0d1d3;
+}
+
+.emailadress:focus,
+.emailadress:active,
+.emailadress:hover {
+  outline: 0.125rem solid #1a1a1a;
+}
+
+.button {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+.button span {
+  vertical-align: middle;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.close-btn {
+  align-self: flex-end;
+  color: #767676;
+  opacity: 0.75;
+  padding: 1rem;
+  font-size: 1.8em;
+  background-color: transparent;
+  border: none;
+}
+
+.close-btn:hover {
+  color: #000;
+}
