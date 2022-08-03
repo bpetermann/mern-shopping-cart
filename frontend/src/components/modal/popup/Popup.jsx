@@ -26,7 +26,7 @@ const Popup = ({ closePopup }) => {
           X
         </button>
         <form className={styles['content']} onSubmit={registrationHandler}>
-          <h1 className={styles['headline']}>Get 5% Off</h1>
+          <h1 className={styles['headline']}>GET 5% OFF</h1>
           <span className={styles['info']}>YOUR FIRST PURCHASE</span>
           <h3>Subscribe to get started!</h3>
           <input
