@@ -1,0 +1,36 @@
+.container {
+  height: 3rem;
+  background: #fff;
+  border-bottom: 1px solid #d0d1d3;
+}
+
+.link-position {
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.category-link {
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  border-bottom: 2px solid transparent;
+}
+
+.category-link:hover {
+  border-bottom: 2px solid #000;
+}
+
+.category-link-active {
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid #000;
+}

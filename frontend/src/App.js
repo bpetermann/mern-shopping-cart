@@ -13,6 +13,7 @@ import PageNotFound from './pages/404';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Categories from './components/layout/Categories';
 
 const App = () => {
   const { showShoppingCart } = useSelector((state) => state.cart);
@@ -38,6 +39,7 @@ const App = () => {
         {showPopup && <Popup closePopup={closePopupHandler} />}
         <Navbar />
         <Searchbar />
+        <Categories />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/auth' element={<Auth />} />

@@ -12,6 +12,11 @@ const productSchema = mongoose.Schema(
       required: [true, 'Please add an Id'],
       unique: false,
     },
+    category: {
+      type: String,
+      required: [true, 'Please add an category'],
+      unique: false,
+    },
     price: {
       type: Number,
       required: [true, 'Please add a Price'],

@@ -5,6 +5,7 @@ const initialState = {
   products: [],
   product: {},
   filter: '',
+  category: 'Shoes',
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -58,6 +59,9 @@ export const productSlice = createSlice({
     filter: (state, action) => {
       state.filter = action.payload;
     },
+    selectCategory: (state,action) => {
+      state.category = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -90,5 +94,5 @@ export const productSlice = createSlice({
   },
 });
 
-export const { reset, filter } = productSlice.actions;
+export const { reset, filter, selectCategory } = productSlice.actions;
 export default productSlice.reducer;

@@ -8,7 +8,9 @@ import Footer from '../layout/Footer';
 import Spinner from '../../components/ui/Spinner';
 
 const ProductsOverview = () => {
-  const { filter, products, isLoading } = useSelector((state) => state.product);
+  const { filter, products, isLoading, category } = useSelector(
+    (state) => state.product
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +18,11 @@ const ProductsOverview = () => {
     dispatch(getWishlistItems(products));
   }, [products, dispatch]);
 
-  let filteredItems = products.filter((item) => {
+  let selectedCategory = products.filter((item) => {
+    return item.category.includes(category);
+  });
+
+  let filteredItems = selectedCategory.filter((item) => {
     return item.description.toLowerCase().includes(filter.toLowerCase());
   });
 
