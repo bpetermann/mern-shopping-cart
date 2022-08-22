@@ -15,7 +15,7 @@ const WishlistItems = () => {
         return (
           <div className={styles.container} key={item._id}>
             <img
-              src={require('../../../images/' + item.name + '.png')}
+              src={require('../../../images/products/' + item.name + '.png')}
               alt={item.name}
               className={styles.image}
               width={160}

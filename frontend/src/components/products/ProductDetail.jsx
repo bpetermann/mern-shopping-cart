@@ -65,7 +65,7 @@ const ProductDetail = () => {
       <div className={styles['container']}>
         <div className={styles['image-container']}>
           <img
-            src={require('../../images/' + product.name + '.png')}
+            src={require('../../images/products/' + product.name + '.png')}
             alt={product.name}
             className={styles['product-image']}
           />

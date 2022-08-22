@@ -21,7 +21,7 @@ const ProductsOverviewItem = ({ products }) => {
           <div className={styles['product-item-container']} key={item._id}>
             <NavLink to={`/products/${item._id}`}>
               <img
-                src={require('../../images/' + item.name + '.png')}
+                src={require('../../images/products/' + item.name + '.png')}
                 alt={item.name}
                 className={styles['product-image']}
               />
