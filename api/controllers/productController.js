@@ -26,7 +26,7 @@ exports.getProduct = asyncHandler(async (req, res) => {
 });
 
 exports.createProduct = asyncHandler(async (req, res) => {
-  const { name, description, price } = req.body;
+  const { name, description, price, category } = req.body;
   const user = {
     id: req.user._id,
     isAdmin: req.user.isAdmin,
@@ -41,6 +41,7 @@ exports.createProduct = asyncHandler(async (req, res) => {
     name,
     description,
     price,
+    category,
   });
 
   if (product) {
@@ -50,6 +51,7 @@ exports.createProduct = asyncHandler(async (req, res) => {
       description: product.description,
       price: product.price,
       amount: product.amount,
+      category: product.category,
     });
   } else {
     res.status(400);
