@@ -12,7 +12,7 @@ router.route('/:productId').get(productController.getProduct);
 
 router
   .route('/rate/:productId')
-  .post(productController.rateProduct)
+  .post(protect, productController.rateProduct)
   .get(productController.getRatings);
 
 module.exports = router;
