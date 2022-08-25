@@ -1,0 +1,20 @@
+.add-btn {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: 0.02rem solid #000;
+  width: 8rem;
+  height: 3rem;
+  font-size: 1rem;
+}
+
+.added-btn {
+  cursor: pointer;
+  background-color: #3d9349;
+  outline: none;
+  border: 0.02rem solid #3d9349;
+  width: 8rem;
+  height: 3rem;
+  font-size: 1rem;
+  color: #fff;
+}

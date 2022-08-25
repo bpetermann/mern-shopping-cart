@@ -17,6 +17,7 @@ import { addProductRating } from '../../lib/db-util';
 
 const ProductDetail = () => {
   const [rating, setRating] = useState(null);
+  const [buttonStyle, setButtonStyle] = useState('add-btn');
   const { product, isLoading, isError } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -34,6 +35,14 @@ const ProductDetail = () => {
     } catch (error) {
       toast.error(error.message);
     }
+  };
+
+  const addToCartHandler = (product) => {
+    dispatch(addItem(product));
+    setButtonStyle('added-btn');
+    setTimeout(() => {
+      setButtonStyle('add-btn');
+    }, 1000);
   };
 
   useEffect(() => {
@@ -88,9 +97,10 @@ const ProductDetail = () => {
               <option value='one'>One Size</option>
             </select>
             <button
+              className={styles[buttonStyle]}
               onClick={(e) => {
                 e.preventDefault();
-                dispatch(addItem(product));
+                addToCartHandler(product);
               }}
             >
               Add to Cart
