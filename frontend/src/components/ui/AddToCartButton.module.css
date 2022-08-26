@@ -18,3 +18,9 @@
   font-size: 1rem;
   color: #fff;
 }
+
+.loading {
+  width: 22px;
+  margin: auto;
+  display: block;
+}

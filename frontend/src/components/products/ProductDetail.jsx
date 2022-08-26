@@ -42,7 +42,7 @@ const ProductDetail = () => {
     setButtonStyle('added-btn');
     setTimeout(() => {
       setButtonStyle('add-btn');
-    }, 1000);
+    }, 1250);
   };
 
   useEffect(() => {
