@@ -1,29 +1,33 @@
-import styles from './AddToCartButton.module.css';
+import styles from './AddToCartBtn.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../features/cart/cartSlice';
 import spinner from '../../images/spinner.gif';
 
-const AddButton = ({ product }) => {
+const AddButton = ({ product, btnStyle }) => {
   const [isLoading, setisLoading] = useState(false);
-  const [buttonStyle, setButtonStyle] = useState('add-btn');
+  const [productWasAdded, setProductWasAdded] = useState(false);
   const dispatch = useDispatch();
+
+  const buttonClasses = `${styles[btnStyle]} ${
+    productWasAdded && styles['added']
+  }`;
 
   const addToCartHandler = (product) => {
     dispatch(addItem(product));
     setisLoading(true);
     setTimeout(() => {
       setisLoading(false);
-      setButtonStyle('added-btn');
+      setProductWasAdded(true);
       setTimeout(() => {
-        setButtonStyle('add-btn');
-      }, 750);
+        setProductWasAdded(false);
+      }, 1000);
     }, 500);
   };
 
   return (
     <button
-      className={styles[buttonStyle]}
+      className={buttonClasses}
       onClick={() => {
         addToCartHandler(product);
       }}

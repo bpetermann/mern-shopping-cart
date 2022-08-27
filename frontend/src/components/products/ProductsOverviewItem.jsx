@@ -7,7 +7,7 @@ import {
 } from '../../features/wishlist/wishlistSlice';
 import StyledIcon from '../ui/StyledIcon';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import AddToCartButton from '../ui/AddToCartButton';
+import AddToCartBtn from '../ui/AddToCartBtn';
 
 const ProductsOverviewItem = ({ products }) => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const ProductsOverviewItem = ({ products }) => {
             )}
             <div>{item.description}</div>
             <div className={styles['item-price']}>{item.price} $</div>
-            <AddToCartButton product={item} btnStyle={'overview'} />
+            <AddToCartBtn product={item} btnStyle={'add-btn'} />
           </div>
         );
       })}

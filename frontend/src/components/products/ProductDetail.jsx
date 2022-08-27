@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import AddToCartBtn from '../ui/AddToCartBtn';
 import { AverageRating, YourRating } from '../ui/Rating';
-import { addItem } from '../../features/cart/cartSlice';
 import { reset } from '../../features/products/productSlice';
 import { toast } from 'react-toastify';
 import styles from './ProductDetail.module.css';
@@ -17,7 +17,6 @@ import { addProductRating } from '../../lib/db-util';
 
 const ProductDetail = () => {
   const [rating, setRating] = useState(null);
-  const [buttonStyle, setButtonStyle] = useState('add-btn');
   const { product, isLoading, isError } = useSelector((state) => state.product);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -35,14 +34,6 @@ const ProductDetail = () => {
     } catch (error) {
       toast.error(error.message);
     }
-  };
-
-  const addToCartHandler = (product) => {
-    dispatch(addItem(product));
-    setButtonStyle('added-btn');
-    setTimeout(() => {
-      setButtonStyle('add-btn');
-    }, 1250);
   };
 
   useEffect(() => {
@@ -92,19 +83,17 @@ const ProductDetail = () => {
             )}
             {user && <YourRating productRating={productRatingHandler} />}
           </div>
-          <form className={styles['product-order-form']}>
+          <form
+            className={styles['product-order-form']}
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <select>
               <option value='one'>One Size</option>
             </select>
-            <button
-              className={styles[buttonStyle]}
-              onClick={(e) => {
-                e.preventDefault();
-                addToCartHandler(product);
-              }}
-            >
-              Add to Cart
-            </button>
+
+            <AddToCartBtn product={product} btnStyle={'form-add-btn'} />
           </form>
           <table className={styles['product-table']}>
             <tbody>

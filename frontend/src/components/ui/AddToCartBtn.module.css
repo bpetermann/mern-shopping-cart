@@ -8,19 +8,29 @@
   font-size: 1rem;
 }
 
-.added-btn {
+.form-add-btn {
+  width: 100%;
   cursor: pointer;
-  background-color: #3d9349;
-  outline: none;
-  border: 0.02rem solid #3d9349;
-  width: 8rem;
-  height: 3rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
+  line-height: 1.5;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+}
+
+.form-add-btn:hover {
+  opacity: 0.8;
+}
+
+.added {
+  background-color: #3d9349;
+  border-color: #3d9349;
   color: #fff;
 }
 
 .loading {
-  width: 22px;
+  width: 1.5rem;
   margin: auto;
   display: block;
 }
