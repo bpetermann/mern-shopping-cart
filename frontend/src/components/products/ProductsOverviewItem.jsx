@@ -1,6 +1,5 @@
 import styles from './ProductsOverviewItem.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import {
   removeFromWishlist,
   addToWishlist,
@@ -8,6 +7,7 @@ import {
 import StyledIcon from '../ui/StyledIcon';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddToCartBtn from '../ui/AddToCartBtn';
+import ProductsOverviewItemImage from './ProductsOverviewItemImage';
 
 const ProductsOverviewItem = ({ products }) => {
   const dispatch = useDispatch();
@@ -18,13 +18,11 @@ const ProductsOverviewItem = ({ products }) => {
       {products.map((item) => {
         return (
           <div className={styles['product-item-container']} key={item._id}>
-            <NavLink to={`/products/${item._id}`}>
-              <img
-                src={require('../../images/products/' + item.name + '.png')}
-                alt={item.name}
-                className={styles['product-image']}
-              />
-            </NavLink>
+            <ProductsOverviewItemImage
+              name={item.name}
+              id={item._id}
+              hasAltImages={item.hasAltImages}
+            />
             {wishlistItems.includes(item) ? (
               <StyledIcon onClick={() => dispatch(removeFromWishlist(item))}>
                 <FavoriteIcon className={styles['wishlist-heart-button']} />
