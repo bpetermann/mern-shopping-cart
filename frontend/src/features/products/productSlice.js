@@ -49,7 +49,7 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => {
-      state.products = [];
+      // state.products = [];
       state.product = {};
       state.isError = false;
       state.isSuccess = false;
@@ -59,7 +59,7 @@ export const productSlice = createSlice({
     filter: (state, action) => {
       state.filter = action.payload;
     },
-    selectCategory: (state,action) => {
+    selectCategory: (state, action) => {
       state.category = action.payload;
     },
   },

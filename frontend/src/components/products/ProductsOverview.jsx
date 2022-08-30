@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStoredItems } from '../../features/cart/cartSlice';
 import { getWishlistItems } from '../../features/wishlist/wishlistSlice';
@@ -53,4 +53,4 @@ const ProductsOverview = () => {
   );
 };
 
-export default ProductsOverview;
+export default React.memo(ProductsOverview);
