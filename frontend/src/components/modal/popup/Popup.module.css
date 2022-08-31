@@ -13,6 +13,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   outline: 1rem solid #fff;
   border: 0.06rem solid #d0d1d3;
+  animation: openPopup 0.5s ease forwards;
 }
 
 @media (min-width: 40rem) {
@@ -83,8 +84,24 @@
   font-size: 1.8em;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .close-btn:hover {
   color: #000;
+}
+
+@keyframes openPopup {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(15%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

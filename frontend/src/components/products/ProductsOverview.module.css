@@ -44,6 +44,11 @@
   padding: 1rem 0;
 }
 
+.error {
+  padding: 0 1rem;
+  text-align: center;
+}
+
 @media (min-width: 40rem) {
   .model-image {
     height: 28rem;

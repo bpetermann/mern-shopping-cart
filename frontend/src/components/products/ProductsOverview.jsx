@@ -8,9 +8,8 @@ import Footer from '../layout/Footer';
 import Spinner from '../../components/ui/Spinner';
 
 const ProductsOverview = () => {
-  const { filter, products, isLoading, category } = useSelector(
-    (state) => state.product
-  );
+  const { filter, products, isError, isLoading, category } =
+    useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,6 +30,14 @@ const ProductsOverview = () => {
   ) : (
     <ProductsOverviewItem products={filteredItems} />
   );
+
+  if (isError) {
+    content = (
+      <span className={styles['error']}>
+        'Some error occured, please try again later'
+      </span>
+    );
+  }
 
   return (
     <>
