@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d589af05.css",
+    "main.js": "/static/js/main.45150f79.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/Brogues.png": "/static/media/Brogues.ca1eaf48d8138ebfc1a1.png",
+    "static/media/Sandals.png": "/static/media/Sandals.1a26e11f75296a484ce3.png",
+    "static/media/model.png": "/static/media/model.9ac677b28f5fd09acb27.png",
+    "static/media/Handbag-alt.png": "/static/media/Handbag-alt.f380c5f28b456dde44f3.png",
+    "static/media/Wristlet.png": "/static/media/Wristlet.6cdf28decde9f05d47c3.png",
+    "static/media/Sling-alt.png": "/static/media/Sling-alt.5fbb446b0750a59bfd1c.png",
+    "static/media/Sling.png": "/static/media/Sling.951777687f44e96676dd.png",
+    "static/media/Pouch.png": "/static/media/Pouch.80a9493725adf862f000.png",
+    "static/media/Handbag.png": "/static/media/Handbag.c135340bc790b053798b.png",
+    "static/media/spinner.gif": "/static/media/spinner.a1a996746e5e48352c81.gif",
+    "static/media/Brogues-alt.png": "/static/media/Brogues-alt.91124ba43a928d0fe459.png",
+    "static/media/Sneakers.png": "/static/media/Sneakers.2ed3b37d3bf1b756e649.png",
+    "index.html": "/index.html",
+    "main.d589af05.css.map": "/static/css/main.d589af05.css.map",
+    "main.45150f79.js.map": "/static/js/main.45150f79.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d589af05.css",
+    "static/js/main.45150f79.js"
+  ]
+}
