@@ -3,7 +3,6 @@
 - Rebuilding my [shopping-cart](https://github.com/bpetermann/shopping-cart) project with node and express
 - State is managed via redux
 - You can subsrcibe to a newsletter, put products to the cart / wihslist, view a single product
-- [View Live](https://mern-shopping-cart-production.up.railway.app/)
 
 ### Thanks
 
