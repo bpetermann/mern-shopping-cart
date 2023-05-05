@@ -1,5 +1,7 @@
 # Mern Shopping Cart
+**This project will no longer be updated and therefore archieved**
 
+### Project Overview
 - Rebuilding my [shopping-cart](https://github.com/bpetermann/shopping-cart) project with node and express
 - State is managed via redux
 - You can subsrcibe to a newsletter, put products to the cart / wihslist, view a single product
